@@ -80,7 +80,7 @@
                                                         <constraint firstAttribute="height" constant="30" id="AtK-LS-FOO"/>
                                                     </constraints>
                                                 </imageView>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalCompressionResistancePriority="749" verticalCompressionResistancePriority="749" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Z0V-VZ-nwg">
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Z0V-VZ-nwg">
                                                     <rect key="frame" x="17" y="36" width="120" height="22"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="22" id="LGg-Vp-0xL"/>
