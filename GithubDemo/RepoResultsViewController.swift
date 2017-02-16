@@ -22,8 +22,12 @@ class RepoResultsViewController: UIViewController, UITableViewDelegate, UITableV
         super.viewDidLoad()
       
         repoTable.dataSource = self
-        //
         repoTable.delegate = self
+      
+        /* attempted automatic resizing
+       
+        repoTable.estimatedRowHeight = 200
+        repoTable.rowHeight = UITableViewAutomaticDimension*/
       
         // Initialize the UISearchBar
         searchBar = UISearchBar()
@@ -66,21 +70,21 @@ class RepoResultsViewController: UIViewController, UITableViewDelegate, UITableV
         return 0
       }
     }
-    
+  
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
       let cell = tableView.dequeueReusableCell(withIdentifier: "repoCell", for: indexPath) as! GTableViewCell
         
-        let singleRepo = repos[indexPath.row]
-        let imageURL = singleRepo.ownerAvatarURL
+      let singleRepo = repos[indexPath.row]
+      let imageURL = singleRepo.ownerAvatarURL
         
-        cell.nameLabel.text = singleRepo.name
-        cell.ownerLabel.text = "by " + singleRepo.ownerHandle!
-        cell.avatarView.setImageWith(URL(string: imageURL!)!)
-        cell.forksLabel.text = "\(singleRepo.forks!)"
-        cell.starsLabel.text = "\(singleRepo.stars!)"
-        cell.descriptionLabel.text = singleRepo.repoDescription
+      cell.nameLabel.text = singleRepo.name
+      cell.ownerLabel.text = "by " + singleRepo.ownerHandle!
+      cell.avatarView.setImageWith(URL(string: imageURL!)!)
+      cell.forksLabel.text = "\(singleRepo.forks!)"
+      cell.starsLabel.text = "\(singleRepo.stars!)"
+      cell.descriptionLabel.text = singleRepo.repoDescription
         
-        return cell
+      return cell
     }
 }
 
