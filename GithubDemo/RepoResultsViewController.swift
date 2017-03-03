@@ -41,14 +41,16 @@ class RepoResultsViewController: UIViewController, UITableViewDelegate, UITableV
       
         // Add settingsButton
         settingsButton = UIBarButtonItem()
-        navigationItem.setRightBarButton(settingsButton, animated: true)
       
         set = UILabel()
         set.text = "Settings"
         set.textAlignment = .center
+        set.sizeToFit()
       
         settingsButton.title = set.text
-
+      
+        navigationItem.setRightBarButton(settingsButton, animated: true)
+      
         // Perform the first search when the view controller first loads
         doSearch()
     }
@@ -102,8 +104,15 @@ class RepoResultsViewController: UIViewController, UITableViewDelegate, UITableV
   func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
     let navController = segue.destination as! UINavigationController
     let vc = navController.topViewController as! SettingsViewController
-    //vc.settin
+    vc.settings = searchSettings
+  }
+  
+  func saved(settings: GithubRepoSearchSettings) {
+    searchSettings = settings
     
+    doSearch()
+    print("New Search")
+    self.dismiss(animated: true, completion: nil)
     
   }
 }
