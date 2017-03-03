@@ -15,8 +15,10 @@ class RepoResultsViewController: UIViewController, UITableViewDelegate, UITableV
     var searchBar: UISearchBar!
     var searchSettings = GithubRepoSearchSettings()
     var repos: [GithubRepo]!
+    var settingsButton: UIBarButtonItem!
+    var set: UILabel!
   
-    @IBOutlet weak var repoTable: UITableView!
+  @IBOutlet weak var repoTable: UITableView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -36,6 +38,16 @@ class RepoResultsViewController: UIViewController, UITableViewDelegate, UITableV
         // Add SearchBar to the NavigationBar
         searchBar.sizeToFit()
         navigationItem.titleView = searchBar
+      
+        // Add settingsButton
+        settingsButton = UIBarButtonItem()
+        navigationItem.setRightBarButton(settingsButton, animated: true)
+      
+        set = UILabel()
+        set.text = "Settings"
+        set.textAlignment = .center
+      
+        settingsButton.title = set.text
 
         // Perform the first search when the view controller first loads
         doSearch()
@@ -86,6 +98,14 @@ class RepoResultsViewController: UIViewController, UITableViewDelegate, UITableV
         
       return cell
     }
+  
+  func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+    let navController = segue.destination as! UINavigationController
+    let vc = navController.topViewController as! SettingsViewController
+    //vc.settin
+    
+    
+  }
 }
 
 // SearchBar methods

@@ -34,7 +34,7 @@
                                         <rect key="frame" x="0.0" y="28" width="375" height="170"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="ROf-2S-Ike" id="VeJ-pI-25h">
-                                            <rect key="frame" x="0.0" y="0.0" width="375" height="169.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="169"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="jQz-CA-WZS">
@@ -147,11 +147,30 @@
                     <navigationItem key="navigationItem" id="x5q-EH-pP8"/>
                     <connections>
                         <outlet property="repoTable" destination="UPY-r2-wRu" id="r10-gv-Gi3"/>
+                        <segue destination="53P-GP-AjI" kind="presentation" identifier="filter" id="ePw-vB-OqF"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="x5A-6p-PRh" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="818.39999999999998" y="-558.17091454272872"/>
+            <point key="canvasLocation" x="894" y="-557"/>
+        </scene>
+        <!--Settings View Controller-->
+        <scene sceneID="7Jh-dr-A04">
+            <objects>
+                <viewController id="53P-GP-AjI" customClass="SettingsViewController" customModule="GithubDemo" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="Ib7-LU-Yef"/>
+                        <viewControllerLayoutGuide type="bottom" id="PMO-US-vAH"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="aRf-6s-tps">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="dpF-GE-ATE" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1638" y="-557"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="FpP-oR-azb">
