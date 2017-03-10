@@ -10,7 +10,7 @@ import UIKit
 import MBProgressHUD
 
 // Main ViewController
-class RepoResultsViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
+class RepoResultsViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, SettingsPresentingViewControllerDelegate {
 
     var searchBar: UISearchBar!
     var searchSettings = GithubRepoSearchSettings()
@@ -26,10 +26,9 @@ class RepoResultsViewController: UIViewController, UITableViewDelegate, UITableV
         repoTable.dataSource = self
         repoTable.delegate = self
       
-        /* attempted automatic resizing
-       
-        repoTable.estimatedRowHeight = 200
-        repoTable.rowHeight = UITableViewAutomaticDimension*/
+        //repoTable.estimatedRowHeight = 200
+        //repoTable.rowHeight = UITableViewAutomaticDimension
+      
       
         // Initialize the UISearchBar
         searchBar = UISearchBar()
@@ -39,6 +38,7 @@ class RepoResultsViewController: UIViewController, UITableViewDelegate, UITableV
         searchBar.sizeToFit()
         navigationItem.titleView = searchBar
       
+        /*
         // Add settingsButton
         settingsButton = UIBarButtonItem()
       
@@ -50,6 +50,7 @@ class RepoResultsViewController: UIViewController, UITableViewDelegate, UITableV
         settingsButton.title = set.text
       
         navigationItem.setRightBarButton(settingsButton, animated: true)
+        */
       
         // Perform the first search when the view controller first loads
         doSearch()
@@ -101,19 +102,24 @@ class RepoResultsViewController: UIViewController, UITableViewDelegate, UITableV
       return cell
     }
   
-  func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+  override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
     let navController = segue.destination as! UINavigationController
     let vc = navController.topViewController as! SettingsViewController
-    vc.settings = searchSettings
+    vc.settings =  searchSettings
+    vc.delegate = self
+    
   }
   
-  func saved(settings: GithubRepoSearchSettings) {
+  func didSaveSettings(settings: GithubRepoSearchSettings) {
     searchSettings = settings
     
     doSearch()
-    print("New Search")
+    //print("New Search")
     self.dismiss(animated: true, completion: nil)
-    
+  }
+  
+  func didCancelSettings() {
+    self.dismiss(animated: true, completion: nil)
   }
 }
 

@@ -8,14 +8,12 @@
 
 import UIKit
 
-class SettingsViewController: UIViewController, SettingsPresentingViewControllerDelegate {
+class SettingsViewController: UIViewController{
   
-  var settings: GithubRepoSearchSettings!
   weak var delegate: SettingsPresentingViewControllerDelegate?
-  /*var cancelButton: UIBarButtonItem!
-  var saveButton: UIBarButtonItem!
-  var saveL: UILabel!
-  var cancelL: UILabel!*/
+  var settings = GithubRepoSearchSettings()
+  
+  @IBOutlet weak var sliderR: UISlider!
   @IBOutlet weak var slideValue: UILabel!
   
   @IBOutlet weak var saveButton: UIBarButtonItem!
@@ -24,23 +22,8 @@ class SettingsViewController: UIViewController, SettingsPresentingViewController
   
   override func viewDidLoad() {
       super.viewDidLoad()
-    
-      /*cancelButton = UIBarButtonItem()
-      saveButton = UIBarButtonItem()
-    
-      saveL = UILabel()
-      cancelL = UILabel()
-    
-      saveL.text = "Save"
-      saveL.textAlignment = .center
-      saveL.sizeToFit()
-    
-      cancelL.text = "Cancel"
-      cancelL.textAlignment = .center
-      cancelL.sizeToFit()
-      navigationItem.setRightBarButton(saveButton, animated: true)
-      navigationItem.setLeftBarButton(cancelButton, animated: true)*/
-    
+      sliderR.value = Float(settings.minStars)
+      slideValue.text = "\(Int(sliderR.value))"
     // Do any additional setup after loading the view.
     }
 
@@ -50,8 +33,18 @@ class SettingsViewController: UIViewController, SettingsPresentingViewController
     }
     
   @IBAction func edit(_ sender: UISlider) {
+    slideValue.text = "\(Int(sliderR.value))"
+    settings.minStars = Int(sliderR.value)
+  }
+  
+  @IBAction func cancel(_ sender: Any) {
+  self.delegate?.didCancelSettings()
   }
 
+  @IBAction func save(_ sender: Any) {
+    self.delegate?.didSaveSettings(settings: settings)
+  }
+  
     /*
     // MARK: - Navigation
 
